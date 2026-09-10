@@ -17,13 +17,16 @@
 2. Клонируйте свой fork, подставив свой логин GitHub:
 
 ```bash
+# Создаёт на компьютере локальную копию вашего fork.
 git clone https://github.com/ВАШ_ЛОГИН/DSA_IDU_26.git
+# Переходит в папку склонированного репозитория.
 cd DSA_IDU_26
 ```
 
 3. Добавьте исходный репозиторий преподавателя:
 
 ```bash
+# Добавляет репозиторий преподавателя под именем upstream для получения обновлений.
 git remote add upstream https://github.com/RuslanKozlyak/DSA_IDU_26.git
 ```
 
@@ -47,19 +50,23 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-5. Запустите Jupyter:
-
-```bash
-jupyter lab
-```
+5. Откройте папку `DSA_IDU_26` в Visual Studio Code. Если редактор предложит
+   установить расширения **Python** и **Jupyter** от Microsoft, установите их.
+6. Откройте нужный файл `labN.ipynb`. В правом верхнем углу ноутбука нажмите
+   **Select Kernel** («Выбрать ядро»), выберите **Python Environments**, затем
+   интерпретатор из созданного окружения `.venv`. После этого ячейки можно
+   выполнять непосредственно в VS Code.
 
 ## Выполнение и сдача работы
 
 Каждая лабораторная выполняется в своей ветке. Например, для первой работы:
 
 ```bash
+# Переключает локальный репозиторий на основную ветку.
 git checkout main
+# Получает актуальное состояние main из репозитория преподавателя.
 git pull upstream main
+# Создаёт отдельную ветку для первой работы и переключается на неё.
 git checkout -b lab1
 ```
 
@@ -68,17 +75,29 @@ git checkout -b lab1
 Добавляйте в коммит только ноутбук текущей работы:
 
 ```bash
+# Добавляет в будущий коммит только ноутбук первой работы.
 git add lab1_complexity/lab1.ipynb
+# Сохраняет подготовленные изменения в локальной истории ветки.
 git commit -m "Выполнена лабораторная работа 1"
+# Отправляет ветку lab1 в ваш fork и связывает локальную ветку с удалённой.
 git push -u origin lab1
 ```
 
-После push откройте Pull Request:
+После push отправьте Pull Request через сайт GitHub:
 
-- **base repository:** `RuslanKozlyak/DSA_IDU_26`;
-- **base branch:** `main`;
-- **head repository:** ваш fork;
-- **compare branch:** `lab1`.
+1. Откройте исходный репозиторий
+   [`RuslanKozlyak/DSA_IDU_26`](https://github.com/RuslanKozlyak/DSA_IDU_26).
+2. В появившейся жёлтой панели нажмите **Compare & pull request**.
+3. Если панели нет, откройте **Pull requests → New pull request**, затем нажмите
+   **compare across forks**.
+4. Проверьте направление изменений:
+   **base repository** — `RuslanKozlyak/DSA_IDU_26`, **base** — `main`,
+   **head repository** — ваш fork, **compare** — ветка `lab1`.
+5. Заполните заголовок и предложенный шаблон: укажите имя, группу и номер
+   лабораторной работы. Нажмите **Create pull request**.
+
+Подробная инструкция есть в
+[документации GitHub](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork).
 
 Для следующих работ используйте ветки `lab2`, `lab3` и `lab4`, каждый раз создавая новую ветку от актуального `main`.
 
@@ -96,9 +115,13 @@ git push -u origin lab1
 ## Как получить обновления курса
 
 ```bash
+# Переключает локальный репозиторий на основную ветку.
 git checkout main
+# Загружает сведения о новых коммитах из репозитория преподавателя.
 git fetch upstream
+# Добавляет полученные изменения upstream/main в локальную ветку main.
 git merge upstream/main
+# Обновляет ветку main в вашем fork.
 git push origin main
 ```
 
